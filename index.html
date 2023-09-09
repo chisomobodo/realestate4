@@ -23,7 +23,7 @@
         <p>We buy, build, rent and invest in Real Estate</p>
         <h3>OWNING A PROPERTY IS THE KEYSTONE TO WEALTH !</h3>
     </header>
-    <main>
+    <main id="container-list">
 
         <div class="sort-options">
             <label for="sort">Sort by:</label>
@@ -33,14 +33,31 @@
                 <option value="location">Location</option>
             </select>
         </div>
-        <section class="property-listings">
-            <div class="property-card">
-                <img src="./1.png" alt="Property 1" width="400">
-                <h2 class="property-title">Luxury Villa</h2>
-                <p class="property-price">$1,200,000</p>
-                <p class="property-location">Ikeja, Lagos NG</p>
+        <section class="property-listings" id="product">
+             
+            <div>
+                <div class="property-card" id="openModalBtn">
+                    <img src="./1.png" alt="Property 1" width="400">
+                    <h2 class="property-title">Luxury Villa</h2>
+                    <p class="property-price">$1,200,000</p>
+                    <p class="property-location">Ikeja, Lagos NG</p>
+    
+                </div>
+                <div id="propertyModal" class="modal hidden">
+                    <div class="modal-content">
+                        <span class="close-btn">&times;</span>
+                        <img id="modalImage" src="" alt="Property">
+                        <h2 id="modalTitle" class="property-title"></h2>
+                        <p id="modalPrice" class="property-price"></p>
+                        <p id="modalLocation" class="property-location"></p>
+                    </div>
+                </div> 
+
+                  
+
+                </div>
             </div>
-            <div class="property-card">
+           <!---- <div class="property-card">
                 <img src="./2.png" alt="Property 2" width="400">
                 <h2 class="property-title">Beachfront Condo</h2>
                 <p class="property-price">$800,000</p>
@@ -69,7 +86,7 @@
                 <h2 class="property-title">King Condo</h2>
                 <p class="property-price">$600,000</p>
                 <p class="property-location">Lekki, Lagos, NG</p>
-            </div>
+            </div> -->
         </section>
     </main>
     <footer>
@@ -79,7 +96,21 @@
             
         </div>
     </footer>
+
+     <div id="propertyModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img id="modalImage" src="" alt="Property">
+            <h2 id="modalTitle" class="property-title"></h2>
+            <p id="modalPrice" class="property-price"></p>
+            <p id="modalLocation" class="property-location"></p>
+        </div>
+    </div> 
     <script src="./script.js"></script>
+    <script>
+        
+    </script>
+
 </body>
 
 </html>

@@ -1,73 +1,83 @@
+const url = 'https://bayut.p.rapidapi.com/properties/detail?externalID=4937770';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '0c6cec7b15mshceb8981571a3dcep11a25ejsnd293906ab6a6',
+		'X-RapidAPI-Host': 'bayut.p.rapidapi.com'
+	}
+};
 
-const rapidApiKey = '0c6cec7b15mshceb8981571a3dcep11a25ejsnd293906ab6a6';
-const bayutApiEndpoint = 'https://bayut.p.rapidapi.com/properties/detail?externalID=4937770';
+
+	 fetch(url, options).then(res => {
+        return res.json()
+    }).then(data => {
+        console.log(data)
+        let markup = ''
+        data.photos.map(element => {
+          markup+= `<div class="property-card">
+         <img src="${element.url}" alt="Property 1" width="400">
+         <h2 class="property-title">${element.title}</h2>
+         <p class="property-price">$1,200,000</p>
+         <p class="property-location">Ikeja, Lagos NG</p>
+     </div>`
+     document.getElementById('product').innerHTML = markup   
+        });
+    }).catch(err => console.log(err));
 
 
-async function fetchPropertyData() {
-  try {
-    const response = await fetch('https://bayut.p.rapidapi.com/properties/detail?externalID=4937770', {
-      method: 'GET',
-      headers: {
-        '0c6cec7b15mshceb8981571a3dcep11a25ejsnd293906ab6a6': rapidApiKey,
-      },
-    });
+    // Function to show the modal with property details
+function showModal(property) {
+    const modal = document.getElementById("propertyModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalPrice = document.getElementById("modalPrice");
+    const modalLocation = document.getElementById("modalLocation");
 
-    if (!response.ok) {
-      throw new Error('Failed to fetch data');
-    }
+    modalImage.src = property.image;
+    modalTitle.textContent = property.title;
+    modalPrice.textContent = property.price;
+    modalLocation.textContent = property.location;
 
-    const data = await response.json();
-
-   
-    const propertyListings = document.querySelector('.property-listings');
-
-    data.results.forEach((property) => {
-      const propertyCard = document.createElement('div');
-      propertyCard.classList.add('property-card');
-
-      
-
-      const propertyTitle = document.createElement('h2');
-      propertyTitle.classList.add('property-title');
-      propertyTitle.textContent = property.title;
-
-      const propertyPrice = document.createElement('p');
-      propertyPrice.classList.add('property-price');
-      propertyPrice.textContent = `$${property.price}`;
-
-      const propertyLocation = document.createElement('p');
-      propertyLocation.classList.add('property-location');
-      propertyLocation.textContent = property.location;
-
-      
-      propertyCard.appendChild(propertyTitle);
-      propertyCard.appendChild(propertyPrice);
-      propertyCard.appendChild(propertyLocation);
-
-      propertyListings.appendChild(propertyCard);
-    });
-  } catch (error) {
-    console.error('Error:', error);
-  }
+    modal.classList.remove("hidden");
 }
 
-window.addEventListener('load', fetchPropertyData);
+
+// Function to hide the modal
+function hideModal() {
+    const modal = document.getElementById("propertyModal");
+    modal.classList.add("hidden");
+}
+
+// Attach click event listeners to property cards
+document.getElementById('product').addEventListener('click', function(event) {
+    const clickedElement = event.target.closest('.property-card');
+    if (clickedElement) {
+        // Get the property details from the clicked card (you need to adjust this part)
+        const property = {
+            image: clickedElement.querySelector('img').src,
+            title: clickedElement.querySelector('.property-title').textContent,
+            price: clickedElement.querySelector('.property-price').textContent,
+            location: clickedElement.querySelector('.property-location').textContent,
+        };
+
+        showModal(property);
+    }
+});
+
+// Attach click event listener to the close button of the modal
+document.querySelector('.close-btn').addEventListener('click', hideModal);
 
 
 
-// const url = 'https://bayut.p.rapidapi.com/properties/detail?externalID=4937770';
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '0c6cec7b15mshceb8981571a3dcep11a25ejsnd293906ab6a6',
-// 		'X-RapidAPI-Host': 'bayut.p.rapidapi.com'
-// 	}
-// };
 
-// try {
-// 	const response = await fetch(url, options);
-// 	const result = await response.text();
-// 	console.log(result);
-// } catch (error) {
-// 	console.error(error);
-// }
+
+
+
+
+
+
+
+
+
+
+
