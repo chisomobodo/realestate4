@@ -36,21 +36,26 @@
         <section class="property-listings" id="product">
              
             <div>
-                <div class="property-card" id="openModalBtn">
+                <!-- added onclick function to this your code, you need to check the styling for why the ui seems of for the div
+                to see the modal, click on this card -->
+                <div class="property-card"  onclick="openPopup()">
                     <img src="./1.png" alt="Property 1" width="400">
                     <h2 class="property-title">Luxury Villa</h2>
                     <p class="property-price">$1,200,000</p>
                     <p class="property-location">Ikeja, Lagos NG</p>
     
                 </div>
-                <div id="propertyModal" class="modal hidden">
+                <!-- below is the line of code for the modal, notice the id and the onClick function -->
+                <div class="popup"  id="popup">
                     <div class="modal-content">
-                        <span class="close-btn">&times;</span>
-                        <img id="modalImage" src="" alt="Property">
-                        <h2 id="modalTitle" class="property-title"></h2>
-                        <p id="modalPrice" class="property-price"></p>
-                        <p id="modalLocation" class="property-location"></p>
+                        <span class="close" onclick="closePopup()">&times;</span>
+                        <img src="./1.png" alt="Property 1" width="200">
+                        <h2 class="property-title">Luxury Villa</h2>
+                        <p class="property-price">$1,200,000</p>
+                        <p class="property-location">Ikeja, Lagos NG</p>
                     </div>
+                </div>
+              
                 </div> 
 
                   
@@ -97,15 +102,6 @@
         </div>
     </footer>
 
-     <div id="propertyModal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <img id="modalImage" src="" alt="Property">
-            <h2 id="modalTitle" class="property-title"></h2>
-            <p id="modalPrice" class="property-price"></p>
-            <p id="modalLocation" class="property-location"></p>
-        </div>
-    </div> 
     <script src="./script.js"></script>
     <script>
         

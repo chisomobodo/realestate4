@@ -192,15 +192,15 @@ footer p {
     width: 80%;
 }
 
-.close-btn {
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close-btn:hover,
-.close-btn:focus {
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -228,10 +228,25 @@ footer p {
 }
 
 
+ /* this is the styling I added for the showing and closing of the modal .popup and .open-popup */
+ .popup{
+    width: 400px;
+    background: white;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+ }
 
- 
+.open-popup{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
 
-
+}
 
 @media screen and (max-width: 768px) {
     .property-card {

@@ -68,9 +68,27 @@ document.getElementById('product').addEventListener('click', function(event) {
 document.querySelector('.close-btn').addEventListener('click', hideModal);
 
 
+// document.getElementById('openModalBtn').addEventListener('click', function() {
+//     document.getElementById('myModal').style.display = 'block';
+// });
+
+// document.getElementsByClassName('close')[0].addEventListener('click', function() {
+//     document.getElementById('myModal').style.display = 'none';
+// });
 
 
 
+// this is the function to show the modal
+
+function openPopup(){
+    let popup = document.getElementById('popup')
+    popup.classList.add("open-popup");
+}
+// this is the function to hide the modal
+function closePopup(){
+    let popup = document.getElementById('popup')
+    popup.classList.remove("open-popup");
+}
 
 
 
