@@ -2,10 +2,11 @@ const url = 'https://bayut.p.rapidapi.com/properties/detail?externalID=4937770';
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '0c6cec7b15mshceb8981571a3dcep11a25ejsnd293906ab6a6',
+		'X-RapidAPI-Key': 'd2d1f6cac6mshf58c114af333d08p187bcbjsn02d6bc6a6e7d',
 		'X-RapidAPI-Host': 'bayut.p.rapidapi.com'
 	}
 };
+
 
 
 	 fetch(url, options).then(res => {
@@ -14,58 +15,68 @@ const options = {
         console.log(data)
         let markup = ''
         data.photos.map(element => {
-          markup+= `<div class="property-card">
+          markup+= `<div><div class="property-card"  onclick="openPopup()">
          <img src="${element.url}" alt="Property 1" width="400">
          <h2 class="property-title">${element.title}</h2>
          <p class="property-price">$1,200,000</p>
          <p class="property-location">Ikeja, Lagos NG</p>
+     </div>
+     <div class="popup"  id="popup">
+                    <div class="modal-content">
+                        <span class="close" onclick="closePopup()">&times;</span>
+                        <img src="${element.url}" alt="Property 1" width="200">
+                        <h2 class="property-title">${element.title}</h2>
+                        <p class="property-price">$1,200,000</p>
+                        <p class="property-location">Ikeja, Lagos NG</p>
+                    </div>
+                </div>
      </div>`
      document.getElementById('product').innerHTML = markup   
         });
     }).catch(err => console.log(err));
 
 
-    // Function to show the modal with property details
-function showModal(property) {
-    const modal = document.getElementById("propertyModal");
-    const modalImage = document.getElementById("modalImage");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalPrice = document.getElementById("modalPrice");
-    const modalLocation = document.getElementById("modalLocation");
+    
+// function showModal(property) {
+//     const modal = document.getElementById("propertyModal");
+//     const modalImage = document.getElementById("modalImage");
+//     const modalTitle = document.getElementById("modalTitle");
+//     const modalPrice = document.getElementById("modalPrice");
+//     const modalLocation = document.getElementById("modalLocation");
 
-    modalImage.src = property.image;
-    modalTitle.textContent = property.title;
-    modalPrice.textContent = property.price;
-    modalLocation.textContent = property.location;
+//     modalImage.src = property.image;
+//     modalTitle.textContent = property.title;
+//     modalPrice.textContent = property.price;
+//     modalLocation.textContent = property.location;
 
-    modal.classList.remove("hidden");
-}
+//     modal.classList.remove("hidden");
+// }
 
 
-// Function to hide the modal
-function hideModal() {
-    const modal = document.getElementById("propertyModal");
-    modal.classList.add("hidden");
-}
 
-// Attach click event listeners to property cards
-document.getElementById('product').addEventListener('click', function(event) {
-    const clickedElement = event.target.closest('.property-card');
-    if (clickedElement) {
-        // Get the property details from the clicked card (you need to adjust this part)
-        const property = {
-            image: clickedElement.querySelector('img').src,
-            title: clickedElement.querySelector('.property-title').textContent,
-            price: clickedElement.querySelector('.property-price').textContent,
-            location: clickedElement.querySelector('.property-location').textContent,
-        };
+// function hideModal() {
+//     const modal = document.getElementById("propertyModal");
+//     modal.classList.add("hidden");
+// }
 
-        showModal(property);
-    }
-});
 
-// Attach click event listener to the close button of the modal
-document.querySelector('.close-btn').addEventListener('click', hideModal);
+// document.getElementById('product').addEventListener('click', function(event) {
+//     const clickedElement = event.target.closest('.property-card');
+//     if (clickedElement) {
+        
+//         const property = {
+//             image: clickedElement.querySelector('img').src,
+//             title: clickedElement.querySelector('.property-title').textContent,
+//             price: clickedElement.querySelector('.property-price').textContent,
+//             location: clickedElement.querySelector('.property-location').textContent,
+//         };
+
+//         showModal(property);
+//     }
+// });
+
+
+// document.querySelector('.close-btn').addEventListener('click', hideModal);
 
 
 // document.getElementById('openModalBtn').addEventListener('click', function() {
@@ -78,13 +89,13 @@ document.querySelector('.close-btn').addEventListener('click', hideModal);
 
 
 
-// this is the function to show the modal
+
 
 function openPopup(){
     let popup = document.getElementById('popup')
     popup.classList.add("open-popup");
 }
-// this is the function to hide the modal
+
 function closePopup(){
     let popup = document.getElementById('popup')
     popup.classList.remove("open-popup");
