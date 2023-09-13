@@ -15,15 +15,15 @@ const options = {
         console.log(data)
         let markup = ''
         data.photos.map(element => {
-          markup+= `<div><div class="property-card"  onclick="openPopup()">
+          markup+= `<div><div class="property-card"  onclick="openPopup(${element.id})">
          <img src="${element.url}" alt="Property 1" width="400">
          <h2 class="property-title">${element.title}</h2>
          <p class="property-price">$1,200,000</p>
          <p class="property-location">Ikeja, Lagos NG</p>
      </div>
-     <div class="popup"  id="popup">
+     <div class="popup"  id="popup-${element.id}">
                     <div class="modal-content">
-                        <span class="close" onclick="closePopup()">&times;</span>
+                        <span class="close" onclick="closePopup(${element.id})">&times;</span>
                         <img src="${element.url}" alt="Property 1" width="200">
                         <h2 class="property-title">${element.title}</h2>
                         <p class="property-price">$1,200,000</p>
@@ -91,16 +91,18 @@ const options = {
 
 
 
-function openPopup(){
-    let popup = document.getElementById('popup')
-    popup.classList.add("open-popup");
+// function openPopup(id){
+//     let popup = document.getElementById('popup-${id}')
+//     popup.classList.add("open-popup");
+// }
+// added id to make the modal unique
+function openPopup(id) {
+    document.getElementById(`popup-${id}`).classList.add('open-popup');
 }
 
-function closePopup(){
-    let popup = document.getElementById('popup')
-    popup.classList.remove("open-popup");
+function closePopup(id) {
+    document.getElementById(`popup-${id}`).classList.remove("open-popup");
 }
-
 
 
 
