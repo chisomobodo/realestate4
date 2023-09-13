@@ -37,64 +37,14 @@ const options = {
 
 
     
-// function showModal(property) {
-//     const modal = document.getElementById("propertyModal");
-//     const modalImage = document.getElementById("modalImage");
-//     const modalTitle = document.getElementById("modalTitle");
-//     const modalPrice = document.getElementById("modalPrice");
-//     const modalLocation = document.getElementById("modalLocation");
-
-//     modalImage.src = property.image;
-//     modalTitle.textContent = property.title;
-//     modalPrice.textContent = property.price;
-//     modalLocation.textContent = property.location;
-
-//     modal.classList.remove("hidden");
-// }
-
-
-
-// function hideModal() {
-//     const modal = document.getElementById("propertyModal");
-//     modal.classList.add("hidden");
-// }
-
-
-// document.getElementById('product').addEventListener('click', function(event) {
-//     const clickedElement = event.target.closest('.property-card');
-//     if (clickedElement) {
-        
-//         const property = {
-//             image: clickedElement.querySelector('img').src,
-//             title: clickedElement.querySelector('.property-title').textContent,
-//             price: clickedElement.querySelector('.property-price').textContent,
-//             location: clickedElement.querySelector('.property-location').textContent,
-//         };
-
-//         showModal(property);
-//     }
-// });
-
-
-// document.querySelector('.close-btn').addEventListener('click', hideModal);
-
-
-// document.getElementById('openModalBtn').addEventListener('click', function() {
-//     document.getElementById('myModal').style.display = 'block';
-// });
-
-// document.getElementsByClassName('close')[0].addEventListener('click', function() {
-//     document.getElementById('myModal').style.display = 'none';
-// });
 
 
 
 
 
-// function openPopup(id){
-//     let popup = document.getElementById('popup-${id}')
-//     popup.classList.add("open-popup");
-// }
+
+
+
 // added id to make the modal unique
 function openPopup(id) {
     document.getElementById(`popup-${id}`).classList.add('open-popup');
